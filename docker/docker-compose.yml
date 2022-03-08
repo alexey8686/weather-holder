@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./scripts/mongo/init:/docker-entrypoint-initdb.d
+      - ./scripts/mongo/init:/home/mongodb
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
